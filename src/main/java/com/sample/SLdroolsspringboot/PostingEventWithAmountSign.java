@@ -6,12 +6,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class PostingEventWithAmountSign {
-	public String amtSignCd;
-	public String trnType;
-	public String acctngEventType;
-	public int acctngTrtmtID;
-	public String insuredInd;
-	public Date acctngEventDt;
+	private String trnType;
+	private String acctngEventType;
+	private Date acctngEventDt;
+	private int acctngTrtmtID;
+	private String insuredInd;
+	private double acctngEventAmt;
+	private String amtSignCd;
 	
 	public String getTrnType() {
 		return trnType;
@@ -25,6 +26,12 @@ public class PostingEventWithAmountSign {
 	public void setAcctngEventType(String acctngEventType) {
 		this.acctngEventType = acctngEventType;
 	}
+	public Date getAcctngEventDt() {
+		return acctngEventDt;
+	}
+	public void setAcctngEventDt(Date acctngEventDt) {
+		this.acctngEventDt = acctngEventDt;
+	}
 	public int getAcctngTrtmtID() {
 		return acctngTrtmtID;
 	}
@@ -37,39 +44,34 @@ public class PostingEventWithAmountSign {
 	public void setInsuredInd(String insuredInd) {
 		this.insuredInd = insuredInd;
 	}
-	public Date getAcctngEventDt() {
-		return acctngEventDt;
+	public double getAcctngEventAmt() {
+		return acctngEventAmt;
 	}
-	public void setAcctngEventDt(Date acctngEventDt) {
-		this.acctngEventDt = acctngEventDt;
+	public void setAcctngEventAmt(double acctngEventAmt) {
+		this.acctngEventAmt = acctngEventAmt;
 	}
 	public String getAmtSignCd() {
 		return amtSignCd;
 	}
-	public void setAmtSignCd(String amtSignCd) {
-		this.amtSignCd = amtSignCd;
-	}
-	public PostingEventWithAmountSign createPstngEvntWithSign(SLPostingEvent pstngEvent) {
-		this.trnType = pstngEvent.getTrnType();
-		this.acctngEventType = pstngEvent.getAcctngEventType();
-		this.acctngTrtmtID = pstngEvent.getAcctngTrtmtID();
-		this.insuredInd = pstngEvent.getInsuredInd();
-		this.acctngEventDt = pstngEvent.getAcctngEventDt();
-		return this;
-	}
-	
-	public String populateAmtSignCd(double amount) {
-		if (amount > 0) {
-			return "P";
+	public void setAmtSignCd(double amount) {
+		if (amount > 0.0) {
+			this.amtSignCd = "P";
 		} else {
-			return "N";
+			this.amtSignCd = "N";
 		}
+	}
+	public void copyDatatoNewOject(SLPostingEvent inputEvent) {
+		this.trnType = inputEvent.getTrnType();
+		this.acctngEventType = inputEvent.getAcctngEventType();
+		this.acctngTrtmtID = inputEvent.getAcctngTrtmtID();
+		this.insuredInd = inputEvent.getInsuredInd();
+		this.acctngEventDt = inputEvent.getAcctngEventDt();
+		this.acctngEventAmt = inputEvent.getAcctngEventAmt();
 	}
 	@Override
 	public String toString() {
-		return "PostingEventWithAmountSign [amtSignCd=" + amtSignCd + ", trnType=" + trnType + ", acctngEventType="
-				+ acctngEventType + ", acctngTrtmtID=" + acctngTrtmtID + ", insuredInd=" + insuredInd
-				+ ", acctngEventDt=" + acctngEventDt + "]";
-	}	
-	
+		return "PostingEventWithAmountSign [trnType=" + trnType + ", acctngEventType=" + acctngEventType
+				+ ", acctngEventDt=" + acctngEventDt + ", acctngTrtmtID=" + acctngTrtmtID + ", insuredInd=" + insuredInd
+				+ ", acctngEventAmt=" + acctngEventAmt + ", amtSignCd=" + amtSignCd + "]";
+	}
 }

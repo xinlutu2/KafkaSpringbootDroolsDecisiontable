@@ -13,8 +13,6 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
-import util.OutputFormat;
-
 //@EnableKafka
 @Configuration
 public class SenderConfig {
@@ -23,7 +21,7 @@ public class SenderConfig {
 	private String bootstrapServers;
 	
 	@Bean
-	  public ProducerFactory<String, OutputFormat> producerFactory() {
+	  public ProducerFactory<String, SLJournalEntry> producerFactory() {
 	    return new DefaultKafkaProducerFactory<>(
 	    		producerConfigs(),
 	    		new StringSerializer(),
@@ -42,7 +40,7 @@ public class SenderConfig {
 	  }
 	
 	@Bean
-	  public KafkaTemplate<String, OutputFormat> kafkaTemplate() {
+	  public KafkaTemplate<String, SLJournalEntry> kafkaTemplate() {
 	    return new KafkaTemplate<>(producerFactory());
 	  }
 }

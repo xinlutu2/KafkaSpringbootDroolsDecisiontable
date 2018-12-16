@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
-import util.OutputFormat;
-
 //@Service
 @Component
 public class MessageSender {
@@ -14,9 +12,9 @@ public class MessageSender {
 	private String publishTopic;
 	
 	@Autowired
-	private KafkaTemplate<String, OutputFormat> kafkaTemplate;
+	private KafkaTemplate<String, SLJournalEntry> kafkaTemplate;
 	
-	public void sendToKafka(OutputFormat outputEvent) {
+	public void sendToKafka(SLJournalEntry outputEvent) {
 		try {
 			System.out.println("Sending message"+outputEvent.toString());
 			kafkaTemplate.send(publishTopic, outputEvent);

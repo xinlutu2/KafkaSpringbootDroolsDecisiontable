@@ -1,65 +1,63 @@
 package com.sample.SLdroolsspringboot;
 
-import java.util.HashMap;
-
 import org.springframework.stereotype.Component;
 
 @Component
 public class SLJournalEntry {
-	public static String pstngRuleSetCd;
-	public static String drSLAcctNm;
-	public static String drDbOrCrCd;
-	public static String drAcctngBasisCd;
-	public static String crSLAcctNm;
-	public static String crDbOrCrCd;
-	public static String crAcctngBasisCd;
+	public String pstngRuleSetCd;
+	public  String drSLAcctNm;
+	public  String drDbOrCrCd;
+	public  String drAcctngBasisCd;
+	public  String crSLAcctNm;
+	public  String crDbOrCrCd;
+	public  String crAcctngBasisCd;
 	
-	public static String getPstngRuleSetCd() {
+	public String getPstngRuleSetCd() {
 		return pstngRuleSetCd;
 	}
-	public static void setPstngRuleSetCd(String pstngRuleSetCd) {
-		SLJournalEntry.pstngRuleSetCd = pstngRuleSetCd;
+	public void setPstngRuleSetCd(String pstngRuleSetCd) {
+		this.pstngRuleSetCd = pstngRuleSetCd;
 	}
-	public static String getDrSLAcctNm() {
+	public  String getDrSLAcctNm() {
 		return drSLAcctNm;
 	}
-	public static void setDrSLAcctNm(String drSLAcctNm) {
-		SLJournalEntry.drSLAcctNm = drSLAcctNm;
+	public  void setDrSLAcctNm(String drSLAcctNm) {
+		this.drSLAcctNm = drSLAcctNm;
 	}
-	public static String getDrDbOrCrCd() {
+	public  String getDrDbOrCrCd() {
 		return drDbOrCrCd;
 	}
-	public static void setDrDbOrCrCd(String drDbOrCrCd) {
-		SLJournalEntry.drDbOrCrCd = drDbOrCrCd;
+	public  void setDrDbOrCrCd(String drDbOrCrCd) {
+		this.drDbOrCrCd = drDbOrCrCd;
 	}
-	public static String getDrAcctngBasisCd() {
+	public  String getDrAcctngBasisCd() {
 		return drAcctngBasisCd;
 	}
-	public static void setDrAcctngBasisCd(String drAcctngBasisCd) {
-		SLJournalEntry.drAcctngBasisCd = drAcctngBasisCd;
+	public  void setDrAcctngBasisCd(String drAcctngBasisCd) {
+		this.drAcctngBasisCd = drAcctngBasisCd;
 	}
-	public static String getCrSLAcctNm() {
+	public  String getCrSLAcctNm() {
 		return crSLAcctNm;
 	}
-	public static void setCrSLAcctNm(String crSLAcctNm) {
-		SLJournalEntry.crSLAcctNm = crSLAcctNm;
+	public  void setCrSLAcctNm(String crSLAcctNm) {
+		this.crSLAcctNm = crSLAcctNm;
 	}
-	public static String getCrDbOrCrCd() {
+	public  String getCrDbOrCrCd() {
 		return crDbOrCrCd;
 	}
-	public static void setCrDbOrCrCd(String crDbOrCrCd) {
-		SLJournalEntry.crDbOrCrCd = crDbOrCrCd;
+	public  void setCrDbOrCrCd(String crDbOrCrCd) {
+		this.crDbOrCrCd = crDbOrCrCd;
 	}
-	public static String getCrAcctngBasisCd() {
+	public  String getCrAcctngBasisCd() {
 		return crAcctngBasisCd;
 	}
-	public static void setCrAcctngBasisCd(String crAcctngBasisCd) {
-		SLJournalEntry.crAcctngBasisCd = crAcctngBasisCd;
+	public  void setCrAcctngBasisCd(String crAcctngBasisCd) {
+		this.crAcctngBasisCd = crAcctngBasisCd;
 	}
-	
 	@Override
 	public String toString() {
-		return "OutputFormat [pstngRuleSetCd=" + pstngRuleSetCd + ", drSLAcctNm=" + drSLAcctNm + ", drDbOrCrCd=" + drDbOrCrCd + ", drAcctngBasisCd=" + drAcctngBasisCd + ", crSLAcctNm=" + crSLAcctNm + ", crDbOrCrCd=" + crDbOrCrCd
-				+ ", crAcctngBasisCd=" + crAcctngBasisCd + "]";
-	}
+		return "SLJournalEntry [pstngRuleSetCd=" + pstngRuleSetCd + ", drSLAcctNm=" + drSLAcctNm + ", drDbOrCrCd="
+				+ drDbOrCrCd + ", drAcctngBasisCd=" + drAcctngBasisCd + ", crSLAcctNm=" + crSLAcctNm + ", crDbOrCrCd="
+				+ crDbOrCrCd + ", crAcctngBasisCd=" + crAcctngBasisCd + "]";
+	}	
 }

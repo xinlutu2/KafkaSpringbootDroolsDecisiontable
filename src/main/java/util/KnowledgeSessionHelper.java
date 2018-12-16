@@ -17,8 +17,15 @@ import org.kie.api.event.rule.RuleRuntimeEventListener;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.StatelessKieSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.sample.SLdroolsspringboot.SLService;
 
 public class KnowledgeSessionHelper {
+	
+	static final Logger logger = LoggerFactory.getLogger(SLService.class);
+	
 	public static KieContainer createRuleBase() {
 		KieServices ks = KieServices.Factory.get();
 		KieContainer kc = ks.getKieClasspathContainer();
@@ -38,31 +45,31 @@ public class KnowledgeSessionHelper {
 			@Override
 			public void objectUpdated(ObjectUpdatedEvent event) {
 				// TODO Auto-generated method stub
-				System.out.println("Object was updated \n" + event.getObject().toString());
+				logger.info("Object was updated \n" + event.getObject().toString());
 			}
 			@Override
 			public void objectInserted(ObjectInsertedEvent event) {
 				// TODO Auto-generated method stub
-				System.out.println("Object inserted \n" + event.getObject().toString());
+				logger.info("Object inserted \n" + event.getObject().toString());
 				
 			}
 			@Override
 			public void objectDeleted(ObjectDeletedEvent event) {
 				// TODO Auto-generated method stub
-				System.out.println("Object retracted \n"+event.getOldObject().toString());
+				logger.info("Object retracted \n"+event.getOldObject().toString());
 			}
 		});
 		statefullSession.addEventListener(new AgendaEventListener() {
 			@Override
 			public void matchCreated(MatchCreatedEvent event) {
 				// TODO Auto-generated method stub
-				System.out.println("The rule "+ event.getMatch().getRule().getName()+ " can be fired in agenda");
+				logger.info("The rule "+ event.getMatch().getRule().getName()+ " can be fired in agenda");
 			}
 			
 			@Override
 			public void matchCancelled(MatchCancelledEvent event) {
 				// TODO Auto-generated method stub
-				System.out.println("The rule "+ event.getMatch().getRule().getName()+ " can no longer be in agenda");
+				logger.info("The rule "+ event.getMatch().getRule().getName()+ " can no longer be in agenda");
 			}
 			
 			@Override
@@ -80,7 +87,7 @@ public class KnowledgeSessionHelper {
 			@Override
 			public void beforeMatchFired(BeforeMatchFiredEvent event) {
 				// TODO Auto-generated method stub
-				System.out.println("The rule "+ event.getMatch().getRule().getName()+ " will be fired");
+				logger.info("The rule "+ event.getMatch().getRule().getName()+ " will be fired");
 			}
 			
 			@Override
@@ -110,7 +117,8 @@ public class KnowledgeSessionHelper {
 			@Override
 			public void afterMatchFired(AfterMatchFiredEvent event) {
 				// TODO Auto-generated method stub
-				System.out.println("The rule "+ event.getMatch().getRule().getName()+ " has been fired");
+				logger.info("The rule "+ event.getMatch().getRule().getName()+ " has been fired");
+				//logger.debug("The rule "+ event.getMatch().getRule().getName()+ " has been fired");
 			}
 		});
 		return statefullSession;
